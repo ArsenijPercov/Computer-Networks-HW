@@ -1,0 +1,83 @@
+ b1 ping -6 -c 1 2001:638:709:b2::1
+PING 2001:638:709:b2::1(2001:638:709:b2::1) 56 data bytes
+64 bytes from 2001:638:709:b2::1: icmp_seq=1 ttl=62 time=0.215 ms
+--- 2001:638:709:b2::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.215/0.215/0.215/0.000 ms
+
+ b1 ping -6 -c 1 2001:638:709:b3::1
+PING 2001:638:709:b3::1(2001:638:709:b3::1) 56 data bytes
+64 bytes from 2001:638:709:b3::1: icmp_seq=1 ttl=61 time=0.210 ms
+--- 2001:638:709:b3::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.210/0.210/0.210/0.000 ms
+
+ b1 ping -6 -c 1 2001:638:709:b4::1
+PING 2001:638:709:b4::1(2001:638:709:b4::1) 56 data bytes
+64 bytes from 2001:638:709:b4::1: icmp_seq=1 ttl=62 time=0.185 ms
+--- 2001:638:709:b4::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.185/0.185/0.185/0.000 ms
+
+ b2 ping -6 -c 1 2001:638:709:b1::1
+PING 2001:638:709:b1::1(2001:638:709:b1::1) 56 data bytes
+64 bytes from 2001:638:709:b1::1: icmp_seq=1 ttl=62 time=0.096 ms
+--- 2001:638:709:b1::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.096/0.096/0.096/0.000 ms
+
+ b2 ping -6 -c 1 2001:638:709:b3::1
+PING 2001:638:709:b3::1(2001:638:709:b3::1) 56 data bytes
+64 bytes from 2001:638:709:b3::1: icmp_seq=1 ttl=62 time=0.047 ms
+--- 2001:638:709:b3::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.047/0.047/0.047/0.000 ms
+
+ b2 ping -6 -c 1 2001:638:709:b4::1
+PING 2001:638:709:b4::1(2001:638:709:b4::1) 56 data bytes
+64 bytes from 2001:638:709:b4::1: icmp_seq=1 ttl=61 time=0.112 ms
+--- 2001:638:709:b4::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.112/0.112/0.112/0.000 ms
+
+ b3 ping -6 -c 1 2001:638:709:b1::1
+PING 2001:638:709:b1::1(2001:638:709:b1::1) 56 data bytes
+64 bytes from 2001:638:709:b1::1: icmp_seq=1 ttl=61 time=0.134 ms
+--- 2001:638:709:b1::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.134/0.134/0.134/0.000 ms
+
+ b3 ping -6 -c 1 2001:638:709:b2::1
+PING 2001:638:709:b2::1(2001:638:709:b2::1) 56 data bytes
+64 bytes from 2001:638:709:b2::1: icmp_seq=1 ttl=62 time=0.100 ms
+--- 2001:638:709:b2::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.100/0.100/0.100/0.000 ms
+
+ b3 ping -6 -c 1 2001:638:709:b4::1
+PING 2001:638:709:b4::1(2001:638:709:b4::1) 56 data bytes
+64 bytes from 2001:638:709:b4::1: icmp_seq=1 ttl=62 time=0.048 ms
+--- 2001:638:709:b4::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.048/0.048/0.048/0.000 ms
+
+ b4 ping -6 -c 1 2001:638:709:b1::1
+PING 2001:638:709:b1::1(2001:638:709:b1::1) 56 data bytes
+64 bytes from 2001:638:709:b1::1: icmp_seq=1 ttl=62 time=0.104 ms
+--- 2001:638:709:b1::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.104/0.104/0.104/0.000 ms
+
+ b4 ping -6 -c 1 2001:638:709:b2::1
+PING 2001:638:709:b2::1(2001:638:709:b2::1) 56 data bytes
+64 bytes from 2001:638:709:b2::1: icmp_seq=1 ttl=61 time=0.113 ms
+--- 2001:638:709:b2::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.113/0.113/0.113/0.000 ms
+
+ b4 ping -6 -c 1 2001:638:709:b3::1
+PING 2001:638:709:b3::1(2001:638:709:b3::1) 56 data bytes
+64 bytes from 2001:638:709:b3::1: icmp_seq=1 ttl=62 time=0.097 ms
+--- 2001:638:709:b3::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.097/0.097/0.097/0.000 ms

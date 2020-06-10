@@ -1,0 +1,294 @@
+\documentclass[a4paper]{article}
+\usepackage[pdftex]{hyperref}
+\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage{listings}
+% move the asterisk at the right position
+\lstset{basicstyle=\ttfamily,tabsize=4,literate={*}{${}^*{}$}1}
+%\lstset{language=C,basicstyle=\ttfamily}
+\usepackage{moreverb}
+\usepackage{palatino}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{comment}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes.gates.logic.US,shapes.gates.logic.IEC,calc}
+%% pdflatex?
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\parindent=0cm
+\parskip=0cm
+
+\setlength{\columnseprule}{0.4pt}
+\addtolength{\columnsep}{2pt}
+
+\addtolength{\textheight}{5.5cm}
+\addtolength{\topmargin}{-26mm}
+\pagestyle{empty}
+
+%%
+%% Sheet setup
+%% 
+\newcommand{\coursename}{Computer Networks}
+
+ 
+\newcommand{\sheettitle}{Homework}
+\newcommand{\mytitle}{}
+\newcommand{\mytoday}{\textcolor{blue}{March 6th}, 2020}
+
+% Current Assignment number
+\newcounter{assignmentno}
+\setcounter{assignmentno}{1}
+
+% Current Problem number, should always start at 1
+\newcounter{problemno}
+\setcounter{problemno}{1}
+
+%%
+%% problem and bonus environment
+%%
+\newcounter{probcalc}
+\newcommand{\problem}[2]{
+  \pagebreak[2]
+  \setcounter{probcalc}{#2}
+  ~\\
+  {\large \textbf{Problem \textcolor{blue}{\arabic{assignmentno}}.\textcolor{blue}{\arabic{problemno}}} \hspace{0.2cm}\textit{#1}} \refstepcounter{problemno}\vspace{2pt}\\}
+
+\newcommand{\bonus}[2]{
+  \pagebreak[2]
+  \setcounter{probcalc}{#2}
+  ~\\
+  {\large \textbf{Bonus Problem \textcolor{blue}{\arabic{assignmentno}}.\textcolor{blue}{\arabic{problemno}}} \hspace{0.2cm}\textit{#1}} \refstepcounter{problemno}\vspace{2pt}\\}
+
+%% some counters  
+\newcommand{\assignment}{\arabic{assignmentno}}
+
+%% solution  
+\newcommand{\solution}{\pagebreak[2]{\bf Solution:}\\}
+
+%% Hyperref Setup
+\hypersetup{pdftitle={Homework \assignment},
+  pdfsubject={\coursename},
+  pdfauthor={},
+  pdfcreator={},
+  pdfkeywords={Computer Architecture and Programming Languages},
+  %  pdfpagemode={FullScreen},
+  %colorlinks=true,
+  %bookmarks=true,
+  %hyperindex=true,
+  bookmarksopen=false,
+  bookmarksnumbered=true,
+  breaklinks=true,
+  %urlcolor=darkblue
+  urlbordercolor={0 0 0.7}
+}
+
+\begin{document}
+\coursename \hfill 
+Jacobs University Bremen \hfill \mytoday\\
+\textcolor{blue}{Arsenij Percov}\hfill
+\vspace*{0.3cm}\\
+\begin{center}
+{\Large \sheettitle{} \textcolor{blue}{\assignment}\\}
+\end{center}
+
+\problem{}{0}
+\solution
+\textcolor{blue}
+a)\\\begin{verbatim}
+amazon.com                  : min/avg/max = 102/104/108
+www.amazon.com              : min/avg/max = 9.32/12.3/16.8
+www.jacobs-university.de    : min/avg/max = 18.4/21.0/29.1
+moodle.jacobs-university.de : min/avg/max = 2.13/6.69/18.9
+
+Time : 13:30 
+Date: 9th of March, 2020
+Tool: fping Version 4.0
+\end{verbatim}\\
+Using 'www' simplifies the task DNS has to perform, therefore it results in shorter round-time.\\
+Websites on global network (i.e. Amazon) are accessed slower, than the ones located on local network (moodle.jacobs-university.de).\\
+Amazon has faster respond time than jacobs website.\\
+\\
+b)\\
+\begin{verbatim}
+Using mtr 0.92
+
+amazon.com:
+
+Start: 2020-03-09T13:51:24+0100
+HOST: apercov-lenovo-y520-15ikbn  Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. AS???    10.81.255.251        0.0%    10    2.2   3.8   1.3  11.3   3.6
+  2. AS???    192.168.242.3        0.0%    10    2.3   2.4   1.5   5.7   1.2
+  3. AS680    vkr-g2-5-1.x-win.un  0.0%    10    3.1   5.5   2.3  17.7   6.0
+  4. AS680    cr-han2-be15.x-win.  0.0%    10    7.9   9.2   4.8  32.1   8.2
+  5. AS680    cr-fra2-be12.x-win.  0.0%    10   10.7  13.0   9.7  25.0   4.3
+  6. AS1299   ffm-b12-link.telia.  0.0%    10   18.8  13.2   9.2  20.6   4.2
+  7. AS1299   ffm-bb1-link.telia.  0.0%    10  101.9 104.5 101.4 119.4   5.4
+  8. AS1299   prs-bb3-link.telia.  0.0%    10  108.9 108.6 106.2 113.8   2.6
+  9. AS1299   ash-bb2-link.telia. 80.0%    10  101.2 103.7 101.2 106.2   3.5
+ 10. AS1299   ash-b1-link.telia.n  0.0%    10  103.8 103.0 101.4 104.3   0.9
+ 11. AS1299   vadata-ic-333118-as  0.0%    10  107.3 112.0 105.4 126.0   8.0
+ 12. AS???    ???                 100.0    10    0.0   0.0   0.0   0.0   0.0
+ 13. AS???    ???                 100.0    10    0.0   0.0   0.0   0.0   0.0
+ 14. AS???    ???                 100.0    10    0.0   0.0   0.0   0.0   0.0
+ 15. AS???    ???                 100.0    10    0.0   0.0   0.0   0.0   0.0
+ 16. AS???    ???                 100.0    10    0.0   0.0   0.0   0.0   0.0
+ 17. AS???    ???                 100.0    10    0.0   0.0   0.0   0.0   0.0
+ 18. AS???    ???                 100.0    10    0.0   0.0   0.0   0.0   0.0
+ 19. AS???    ???                 100.0    10    0.0   0.0   0.0   0.0   0.0
+ 20. AS???    ???                 100.0    10    0.0   0.0   0.0   0.0   0.0
+ 21. AS???    ???                 100.0    10    0.0   0.0   0.0   0.0   0.0
+ 22. AS???    ???                 100.0    10    0.0   0.0   0.0   0.0   0.0
+ 23. AS16509  176.32.98.166        0.0%    10  102.8 102.4 100.7 108.2   2.4
+
+AS???(2) -> AS680(3) -> AS1299(6) -> AS???(11) -> AS16509(1)
+www.amazon.com:
+Start: 2020-03-09T13:52:18+0100
+HOST: apercov-lenovo-y520-15ikbn  Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. AS???    10.81.255.251        0.0%    10   32.1   7.0   2.9  32.1   9.2
+  2. AS???    192.168.242.3        0.0%    10   31.4   6.5   2.8  31.4   8.9
+  3. AS680    vkr-g2-5-1.x-win.un  0.0%    10   25.1   6.6   3.5  25.1   6.5
+  4. AS680    cr-han2-be15.x-win.  0.0%    10    4.6   6.6   4.6   8.8   1.2
+  5. AS680    cr-tub2-be9.x-win.d  0.0%    10   83.1  23.6  10.7  83.1  22.2
+  6. AS???    akamai.bcix.de       0.0%    10   12.5 813.7  11.5 2731. 1017.1
+  7. AS16625  a104-85-252-108.dep  0.0%    10   12.1  10.9   9.0  12.5   1.1
+
+AS???(2) -> AS680(3) -> AS???(6) -> AS16625(1)
+
+
+www.jacobs-university.de
+
+Start: 2020-03-09T13:53:19+0100
+HOST: apercov-lenovo-y520-15ikbn  Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. AS???    10.81.255.251        0.0%    10    1.6   2.2   1.4   3.9   0.7
+  2. AS???    192.168.242.3        0.0%    10    5.5   3.8   1.5   9.2   2.2
+  3. AS680    vkr-g2-5-1.x-win.un  0.0%    10    3.7   5.4   2.9  14.7   3.5
+  4. AS680    cr-han2-be15.x-win.  0.0%    10   22.1   8.6   4.7  22.1   4.9
+  5. AS680    cr-fra2-be12.x-win.  0.0%    10    9.9  11.8   9.9  13.6   1.2
+  6. AS???    decix-gw.hetzner.de  0.0%    10   13.9  18.3  12.8  59.1  14.4
+  7. AS24940  core24.fsn1.hetzner  0.0%    10   18.3  22.0  15.1  38.9   6.8
+  8. AS24940  ex9k1.dc11.fsn1.het  0.0%    10   17.6  15.9  13.7  19.1   1.7
+  9. AS24940  static.204.219.251.  0.0%    10   18.5  23.7  17.3  40.5   7.9
+
+AS???(2) -> AS680(3) -> AS???(1) -> AS24940(3) 
+
+
+moodle.jacobs-university.de:
+
+Start: 2020-03-09T13:54:21+0100
+HOST: apercov-lenovo-y520-15ikbn  Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. AS???    10.81.255.251        0.0%    10    3.0   5.7   2.3  25.9   7.2
+  2. AS680    moodle.jacobs-unive  0.0%    10    3.1   4.0   3.1   6.9   1.2
+
+AS???(1) -> AS680(1)
+
+\end{verbatim}\\
+Few observations: when WWW prefix wasn't provided, it needed to be resolved. AS1299 is responsible for that (most probably TELIA DNS Server).\\
+amazon.com and www.amazon.com didn't get directed to the sae AS.
+\\
+Jacobs University Website is located on AS24940.
+\\
+Since moodle is located on the local network, it took the least path to be resolved, since we are located within AS680 already.
+\\
+AS680 is the AS the jacobs local network is located, and since we are part of it at the moment of test(connected to eduroam router), it is present in every path.
+\\
+
+\problem{}{0}
+\solution
+\textcolor{blue}
+a)\\
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+AS number & Name and holder of the ASN & Register\\
+\hline
+AS680 & DFN - Verein zur Foerderung eines Deutschen Forschungsnetzes e.V. & RIPE NCC\\
+\hline
+AS1299 & TELIANET - Telia Company AB & RIPE NCC\\
+\hline
+AS16509 & AMAZON-02 & ARIN\\
+\hline
+AS16625 & AKAMAI-AS & ARIN\\
+\hline
+AS24940 & HETZNER-AS - Hetzner Online GmbH & RIPE NCC\\
+\hline
+	
+\end{tabular}
+\end{center}
+
+b)\\
+The ip is used by Campus Network of the International University Bremen.\\
+2001:638:709::/48 was never globally visible as exact match in BGP by any of the RIS peers since beginning of 2004.\\
+This prefix is part of 2001:638::/32\\
+\\\\
+\\\\\\\\\
+\problem{}{0}
+\solution
+\textcolor{blue}
+a)\\
+\begin{verbatim}
+[  3] local 10.0.0.1 port 55640 connected with 10.0.0.2 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  12.0 MBytes  10.1 Mbits/sec
+[  3] 10.0-20.0 sec  11.2 MBytes  9.44 Mbits/sec
+[  3] 20.0-30.0 sec  11.4 MBytes  9.54 Mbits/sec
+[  3] 30.0-40.0 sec  11.5 MBytes  9.65 Mbits/sec
+[  3] 40.0-50.0 sec  11.4 MBytes  9.54 Mbits/sec
+[  3] 50.0-60.0 sec  11.4 MBytes  9.54 Mbits/sec
+[  3]  0.0-60.1 sec  68.9 MBytes  9.62 Mbits/sec
+\end{verbatim}\\
+The speed is exactly like what we expected, since it is a directed connection with capacity of 10 Mbit/s.\\
+b)\\
+The average value for rtt without iperf is 0.070. \\
+The average value for rtt with iperf is 14.336\\
+Propogation delay depends on the distance between the sender and reciever, and the propogation speed. Both are not affected by using iperf.\\
+Transmission delay depends on the package size, and capacity of the link. Capacity is constant 10 mbits,  and package size is also constant.\\
+Therefore, it is queuing delay. The link is experiencing higher arrival rate of the incoming packets, due to the fact that iperf is transfering data to measure the bandwidth, and packages from ping are waiting more time before they are processed. \\
+\problem{}{0}
+\solution
+\textcolor{blue}
+a)\\
+rtt with iperf on: rtt min/avg/max/mdev/ = 0.826/2.658/4.302/1.113\\
+rtt without iperf:  rtt min/avg/max/mdev/ = 0.085/1.534/13.312/3.688\\
+Iperf measurments are impacting the observed round trip, but less significantly rather than for point topology.\\
+\\
+b)\\
+Both iperfs resulted with the same measurments, which are also same to the ones seen before while measuring h1 - h2 alone. (around 9.5Mbits/s)\\
+They do not impact each other. \\\\
+\problem{}{0}
+\solution
+\textcolor{blue}
+a)\\
+For both h1 - h4, and h3 - h2 connections measured data rate is 9.54Mbits/s\\
+When we are measuring connection h1 - h3, and h2 - h4. The rate dropped to 4.76Mbits/s and 5.10 Mbits/s respectively.\\
+We can observe that when we run 2 measurements on the link directed in the opposite direction, we use full capacity of the link (it is 2-way), and the data rate is not affected.\\
+When we run measurements on the links in the same direction, then the bandwidth is divided between them, since some packages wait in a queue (queuing delay) to use link for a transfer.\\
+\\
+b)\\
+Measured data rate: \\
+h1 - h4 : 9.56Mbits/s\\
+h3 - h6 : 6.53Mbits/s\\
+Switches are not affecting the bandwidth, and h1-h4 shares only that with h3-h6, so h1-h4 is not affected. \\
+However, h3-h6 uses link between s2 and s3, that has 5\% loss. Even though is is faster link, we are not using its full capacity, since the link before it, transfers only 10. These 10, are getting affected by the loss, some packages are not arriving and have to be send multiple times, and that explains the drop in bandwidth. \\
+\end{document}

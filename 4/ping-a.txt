@@ -1,0 +1,94 @@
+	A1
+a1 ping -6 2001:638:709:a2::1
+PING 2001:638:709:a2::1(2001:638:709:a2::1) 56 data bytes
+64 bytes from 2001:638:709:a2::1: icmp_seq=1 ttl=62 time=0.221 ms
+64 bytes from 2001:638:709:a2::1: icmp_seq=2 ttl=62 time=0.104 ms
+--- 2001:638:709:a2::1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1026ms
+rtt min/avg/max/mdev = 0.104/0.162/0.221/0.059 ms
+
+a1 ping -6 2001:638:709:a3::1
+PING 2001:638:709:a3::1(2001:638:709:a3::1) 56 data bytes
+64 bytes from 2001:638:709:a3::1: icmp_seq=1 ttl=61 time=0.204 ms
+64 bytes from 2001:638:709:a3::1: icmp_seq=2 ttl=61 time=0.115 ms
+--- 2001:638:709:a3::1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1022ms
+rtt min/avg/max/mdev = 0.115/0.159/0.204/0.046 ms
+
+a1 ping -6 2001:638:709:a4::1
+PING 2001:638:709:a4::1(2001:638:709:a4::1) 56 data bytes
+64 bytes from 2001:638:709:a4::1: icmp_seq=1 ttl=62 time=0.202 ms
+64 bytes from 2001:638:709:a4::1: icmp_seq=2 ttl=62 time=0.106 ms
+--- 2001:638:709:a4::1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1013ms
+rtt min/avg/max/mdev = 0.106/0.154/0.202/0.048 ms
+
+	A2
+a2 ping -6 2001:638:709:a1::1
+PING 2001:638:709:a1::1(2001:638:709:a1::1) 56 data bytes
+64 bytes from 2001:638:709:a1::1: icmp_seq=1 ttl=62 time=0.105 ms
+64 bytes from 2001:638:709:a1::1: icmp_seq=2 ttl=62 time=0.110 ms
+--- 2001:638:709:a1::1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1010ms
+rtt min/avg/max/mdev = 0.105/0.107/0.110/0.010 ms
+
+
+a2 ping -6 2001:638:709:a3::1
+PING 2001:638:709:a3::1(2001:638:709:a3::1) 56 data bytes
+64 bytes from 2001:638:709:a3::1: icmp_seq=1 ttl=62 time=0.109 ms
+64 bytes from 2001:638:709:a3::1: icmp_seq=2 ttl=62 time=0.112 ms
+--- 2001:638:709:a3::1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1023ms
+rtt min/avg/max/mdev = 0.109/0.110/0.112/0.010 ms
+
+ a2 ping -6 2001:638:709:a4::1
+PING 2001:638:709:a4::1(2001:638:709:a4::1) 56 data bytes
+64 bytes from 2001:638:709:a4::1: icmp_seq=1 ttl=61 time=0.135 ms
+64 bytes from 2001:638:709:a4::1: icmp_seq=2 ttl=61 time=0.114 ms
+--- 2001:638:709:a4::1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1029ms
+rtt min/avg/max/mdev = 0.114/0.124/0.135/0.015 ms
+
+	A3
+a3 ping -6  -c 1 2001:638:709:a4::1
+PING 2001:638:709:a4::1(2001:638:709:a4::1) 56 data bytes
+64 bytes from 2001:638:709:a4::1: icmp_seq=1 ttl=62 time=0.047 ms
+--- 2001:638:709:a4::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.047/0.047/0.047/0.000 ms
+
+a3 ping -6  -c 1 2001:638:709:a1::1
+PING 2001:638:709:a1::1(2001:638:709:a1::1) 56 data bytes
+64 bytes from 2001:638:709:a1::1: icmp_seq=1 ttl=61 time=0.119 ms
+--- 2001:638:709:a1::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.119/0.119/0.119/0.000 ms
+
+a3 ping -6  -c 1 2001:638:709:a2::1
+PING 2001:638:709:a2::1(2001:638:709:a2::1) 56 data bytes
+64 bytes from 2001:638:709:a2::1: icmp_seq=1 ttl=62 time=0.099 ms
+--- 2001:638:709:a2::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.099/0.099/0.099/0.000 ms
+
+	A4
+a4 ping -6  -c 1 2001:638:709:a1::1
+PING 2001:638:709:a1::1(2001:638:709:a1::1) 56 data bytes
+64 bytes from 2001:638:709:a1::1: icmp_seq=1 ttl=62 time=0.106 ms
+--- 2001:638:709:a1::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.106/0.106/0.106/0.000 ms
+
+ a4 ping -6  -c 1 2001:638:709:a2::1
+PING 2001:638:709:a2::1(2001:638:709:a2::1) 56 data bytes
+64 bytes from 2001:638:709:a2::1: icmp_seq=1 ttl=61 time=0.124 ms
+--- 2001:638:709:a2::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.124/0.124/0.124/0.000 ms
+
+ a4 ping -6  -c 1 2001:638:709:a3::1
+PING 2001:638:709:a3::1(2001:638:709:a3::1) 56 data bytes
+64 bytes from 2001:638:709:a3::1: icmp_seq=1 ttl=62 time=0.106 ms
+--- 2001:638:709:a3::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.106/0.106/0.106/0.000 ms

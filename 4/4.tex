@@ -1,0 +1,216 @@
+\documentclass[a4paper]{article}
+\usepackage[pdftex]{hyperref}
+\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage{listings}
+% move the asterisk at the right position
+\lstset{basicstyle=\ttfamily,tabsize=4,literate={*}{${}^*{}$}1}
+%\lstset{language=C,basicstyle=\ttfamily}
+\usepackage{moreverb}
+\usepackage{palatino}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{comment}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes.gates.logic.US,shapes.gates.logic.IEC,calc}
+%% pdflatex?
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\parindent=0cm
+\parskip=0cm
+
+\setlength{\columnseprule}{0.4pt}
+\addtolength{\columnsep}{2pt}
+
+\addtolength{\textheight}{5.5cm}
+\addtolength{\topmargin}{-26mm}
+\pagestyle{empty}
+
+%%
+%% Sheet setup
+%% 
+\newcommand{\coursename}{Computer Networks}
+
+ 
+\newcommand{\sheettitle}{Homework}
+\newcommand{\mytitle}{}
+\newcommand{\mytoday}{\textcolor{blue}{April 14th}, 2020}
+
+% Current Assignment number
+\newcounter{assignmentno}
+\setcounter{assignmentno}{4}
+
+% Current Problem number, should always start at 1
+\newcounter{problemno}
+\setcounter{problemno}{1}
+
+%%
+%% problem and bonus environment
+%%
+\newcounter{probcalc}
+\newcommand{\problem}[2]{
+  \pagebreak[2]
+  \setcounter{probcalc}{#2}
+  ~\\
+  {\large \textbf{Problem \textcolor{blue}{\arabic{assignmentno}}.\textcolor{blue}{\arabic{problemno}}} \hspace{0.2cm}\textit{#1}} \refstepcounter{problemno}\vspace{2pt}\\}
+
+\newcommand{\bonus}[2]{
+  \pagebreak[2]
+  \setcounter{probcalc}{#2}
+  ~\\
+  {\large \textbf{Bonus Problem \textcolor{blue}{\arabic{assignmentno}}.\textcolor{blue}{\arabic{problemno}}} \hspace{0.2cm}\textit{#1}} \refstepcounter{problemno}\vspace{2pt}\\}
+
+%% some counters  
+\newcommand{\assignment}{\arabic{assignmentno}}
+
+%% solution  
+\newcommand{\solution}{\pagebreak[2]{\bf Solution:}\\}
+
+%% Hyperref Setup
+\hypersetup{pdftitle={Homework \assignment},
+  pdfsubject={\coursename},
+  pdfauthor={},
+  pdfcreator={},
+  pdfkeywords={Computer Architecture and Programming Languages},
+  %  pdfpagemode={FullScreen},
+  %colorlinks=true,
+  %bookmarks=true,
+  %hyperindex=true,
+  bookmarksopen=false,
+  bookmarksnumbered=true,
+  breaklinks=true,
+  %urlcolor=darkblue
+  urlbordercolor={0 0 0.7}
+}
+
+\begin{document}
+\coursename \hfill 
+Jacobs University Bremen \hfill \mytoday\\
+\textcolor{blue}{Arsenij Percov}\hfill
+\vspace*{0.3cm}\\
+\begin{center}
+{\Large \sheettitle{} \textcolor{blue}{\assignment}\\}
+\end{center}
+
+\problem{}{0}
+\solution
+a) look ping-a.txt and ping-b.txt and conf files.\\\\
+b)\\
+ISP "F":\\
+\begin{verbatim}
+a1 traceroute 2001:638:709:a2::1
+traceroute to 2001:638:709:a2::1 (2001:638:709:a2::1), 30 hops max, 80 byte packets
+ 1  _gateway (2001:638:709:a1::f1)  0.073 ms  0.022 ms  0.024 ms
+ 2  2001:638:709:f::f1:f2 (2001:638:709:f::f1:f2)  0.047 ms  0.029 ms  0.027 ms
+ 3  2001:638:709:a2::1 (2001:638:709:a2::1)  0.044 ms  0.035 ms  0.033 ms
+ 
+ link f1 f2 down
+
+ a1 traceroute 2001:638:709:a2::1
+traceroute to 2001:638:709:a2::1 (2001:638:709:a2::1), 30 hops max, 80 byte packets
+ 1  _gateway (2001:638:709:a1::f1)  0.072 ms  0.022 ms  0.019 ms
+ 2  2001:638:709:f::f1:f4 (2001:638:709:f::f1:f4)  0.047 ms  0.030 ms  0.028 ms
+ 3  2001:638:709:f::f4:f3 (2001:638:709:f::f4:f3)  0.054 ms  0.038 ms  0.037 ms
+ 4  2001:638:709:f::f3:f2 (2001:638:709:f::f3:f2)  0.059 ms  0.044 ms  0.058 ms
+ 5  2001:638:709:a2::1 (2001:638:709:a2::1)  0.065 ms  0.054 ms  0.054 ms
+\end{verbatim}
+ISP "E"
+\begin{verbatim}
+b1 traceroute 2001:638:709:b2::1
+traceroute to 2001:638:709:b2::1 (2001:638:709:b2::1), 30 hops max, 80 byte packets
+ 1  _gateway (2001:638:709:b1::e1)  0.073 ms  0.023 ms  0.020 ms
+ 2  2001:638:709:e::e1:e2 (2001:638:709:e::e1:e2)  0.045 ms  0.029 ms  0.026 ms
+ 3  2001:638:709:b2::1 (2001:638:709:b2::1)  0.044 ms  0.035 ms  0.034 ms
+ 
+link e1 e2 down
+
+b1 traceroute 2001:638:709:b2::1
+traceroute to 2001:638:709:b2::1 (2001:638:709:b2::1), 30 hops max, 80 byte packets
+ 1  _gateway (2001:638:709:b1::e1)  0.083 ms  0.023 ms  0.018 ms
+ 2  2001:638:709:e::e1:e4 (2001:638:709:e::e1:e4)  0.050 ms  0.029 ms  0.028 ms
+ 3  2001:638:709:e::e4:e3 (2001:638:709:e::e4:e3)  0.048 ms  0.038 ms  0.036 ms
+ 4  2001:638:709:e::e3:e2 (2001:638:709:e::e3:e2)  0.060 ms  0.045 ms  0.046 ms
+ 5  2001:638:709:b2::1 (2001:638:709:b2::1)  0.060 ms  0.049 ms  0.051 ms
+\end{verbatim}
+c)\\
+Examples of the connection to clients networks and internal hosts.
+You can test yourself, by commenting all the filters.
+\begin{verbatim}
+a2 ping -6 2001:638:709:e::e1:e2
+PING 2001:638:709:e::e1:e2(2001:638:709:e::e1:e2) 56 data bytes
+64 bytes from 2001:638:709:e::e1:e2: icmp_seq=1 ttl=62 time=0.182 ms
+64 bytes from 2001:638:709:e::e1:e2: icmp_seq=2 ttl=62 time=0.102 ms
+64 bytes from 2001:638:709:e::e1:e2: icmp_seq=3 ttl=62 time=0.111 ms
+64 bytes from 2001:638:709:e::e1:e2: icmp_seq=4 ttl=62 time=0.109 ms
+--- 2001:638:709:e::e1:e2 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3076ms
+rtt min/avg/max/mdev = 0.102/0.126/0.182/0.032 ms
+\end{verbatim}
+d)\\
+We can test that we still can ping from any Ai host to any Bi host and vice versa.
+\begin{verbatim}
+a2 ping -6 -c 1 2001:638:709:b2::1
+PING 2001:638:709:b2::1(2001:638:709:b2::1) 56 data bytes
+64 bytes from 2001:638:709:b2::1: icmp_seq=1 ttl=61 time=0.083 ms
+--- 2001:638:709:b2::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.083/0.083/0.083/0.000 ms
+
+a1 ping -6 -c 1 2001:638:709:b4::1
+PING 2001:638:709:b4::1(2001:638:709:b4::1) 56 data bytes
+64 bytes from 2001:638:709:b4::1: icmp_seq=1 ttl=60 time=0.233 ms
+--- 2001:638:709:b4::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.233/0.233/0.233/0.000 ms
+
+b2 ping -6 -c 1 2001:638:709:a2::1
+PING 2001:638:709:a2::1(2001:638:709:a2::1) 56 data bytes
+64 bytes from 2001:638:709:a2::1: icmp_seq=1 ttl=61 time=0.155 ms
+--- 2001:638:709:a2::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.155/0.155/0.155/0.000 ms
+
+b1 ping -6 -c 1 2001:638:709:a4::1
+PING 2001:638:709:a4::1(2001:638:709:a4::1) 56 data bytes
+64 bytes from 2001:638:709:a4::1: icmp_seq=1 ttl=60 time=0.237 ms
+--- 2001:638:709:a4::1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.237/0.237/0.237/0.000 ms
+\end{verbatim}\\
+However, we cannot ping anymore to internal hosts of the other AS.\\
+\\
+\begin{verbatim}
+
+mininet> b1 traceroute  -6  2001:638:709:f::f2:f1
+traceroute to 2001:638:709:f::f2:f1 (2001:638:709:f::f2:f1), 30 hops max, 80 byte packets
+ 1  _gateway (2001:638:709:b1::e1)  0.774 ms  0.673 ms  0.625 ms
+ 2  _gateway (2001:638:709:b1::e1)  3048.349 ms !H  3048.291 ms !H  3048.262 ms !H
+ 
+mininet> a3 traceroute  -6  2001:638:709:e::e4:e3
+traceroute to 2001:638:709:e::e4:e3 (2001:638:709:e::e4:e3), 30 hops max, 80 byte packets
+ 1  _gateway (2001:638:709:a3::f3)  0.744 ms  0.643 ms  0.596 ms
+ 2  _gateway (2001:638:709:a3::f3)  3050.857 ms !H  3050.806 ms !H  3050.777 ms !H
+
+\end{verbatim}
+\end{document}
